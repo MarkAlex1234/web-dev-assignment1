@@ -11,13 +11,13 @@ header and footer-->
     <h1>Post Status Process</h1>
     <?php
     
-    	$statuscode = $_POST["statuscode"];
+    $statuscode = $_POST["statuscode"];
 	$status = $_POST["status"];
 	$shareOption = $_POST["shareOption"];
 	$date = $_POST["date"];
 	$likePermission = $_POST["likePermission"];
-    	$commentPermission = $_POST["commentPermission"];
-    	$sharePermission = $_POST["sharePermission"];
+    $commentPermission = $_POST["commentPermission"];
+    $sharePermission = $_POST["sharePermission"];
 
 	$statusCodePattern = "/^S[0-9]{4}$/";
 	$statusPattern = "/^[a-zA-Z0-9\s\,\.\!\?]+$/";
