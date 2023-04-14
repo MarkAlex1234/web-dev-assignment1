@@ -9,26 +9,24 @@
       <?php 
         $search = $_GET["Search"];
 
-	    // If the string is empty or if only spaces are sent reject the search
-        if(!(trim($search ) === '' || empty($search))){
+	// If the string is empty or if only spaces are sent reject the search
+       	if(!(trim($search ) === '' || empty($search))){
            require_once ("../../conf/settings.php"); 
 	
-		    $conn = mysqli_connect($host,
-			    $user,
-			    $pswd,
-			    $dbnm);
+	   $conn = mysqli_connect($host, $user,$pswd,$dbnm);
 
             // Checks if connection is successful
-		    if (!$conn) {
-			    // Displays an error message
-    			die("Connection failed: " . mysqli_connect_error());
-		    }       
+	    if (!$conn) {
+		// Displays an error message
+    		die("Connection failed: " . mysqli_connect_error());
+	     }       
 
-		    $sql_tble = "test";
+	    $sql_tble = "assignment_one";
 
             $sql = "SELECT * FROM ".$sql_tble."";
-            // Executes the query to check the table exists:
-		    $result = mysqli_query($conn, $sql);
+            
+	    // Executes the query to check the table exists:
+	    $result = mysqli_query($conn, $sql);
             if(!$result){
                 echo 'No status found in the system. Please go to the post status page to post one. <br>';
                 echo '<a href=poststatusform.php>Post a new Status<a>';

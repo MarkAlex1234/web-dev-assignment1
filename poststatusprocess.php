@@ -4,10 +4,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Assignment 1 - Web Dev 2023</title>
 </head>
+<body>
 <div class="content">
 <!--div class containing everything on the page except the
 header and footer--> 
-<body>
     <h1>Post Status Process</h1>
     <?php
     
@@ -70,7 +70,7 @@ header and footer-->
 
 		// Sets date as a date from input type text to save in the database
 		try {
-			$dateObj = new DateTime($date);
+			$dateObj = DateTime::createFromFormat('d/m/Y', $date);
 			$formattedDate = $dateObj->format('Y-m-d'); // The database date format is Year, Month, Day so we need to use that format here. 
 		} catch (Exception $e) {
 			echo "Invalid date format: " . $e->getMessage();
@@ -144,6 +144,6 @@ header and footer-->
             echo "<p> Please enter a value for all fields in the input form.";
         }
     ?>
-</body>
 </div>
+</body>
 </html>
