@@ -42,10 +42,36 @@
                 echo '<a href=searchstatusform.html>Search for another status<a> <br>';
 		echo '<a href=index.html>Return to Home Page<a>';
                 return;
-            }
+            } else {
+    		while($row = mysqli_fetch_assoc($result)) {
 
-		
+			if($row['allow_like'] == 1){
+				$allowLike = "Allow Like";
+			} else {
+				$allowLike = "";
+			}
 
+			if($row['allow_comment'] == 1){
+				$allowComment = "Allow Comment";
+			} else {
+				$allowComment = "";
+			}
+
+			if($row['allow_share'] == 1){
+				$allowShare = "Allow Share";
+			} else {
+				$allowShare = "";
+			}
+
+        		// Display the details of the matched status record
+			echo 'Status: '.$row['status_description'].'<br>';
+        		echo 'Status Code: '.$row['status_code'].'<br> <br>';
+			echo 'Share: '.$row['share'].'<br>';
+			echo 'Date Posted: '.$row['status_date'].'<br>';
+			echo 'Permission: '. ($allowLike ? $allowLike . " | " : '') . ($allowComment ? $allowComment  . " | " : '') . ($allowShare ? $allowShare : '') .'<br>';
+        		echo '<br>';
+    	    		}
+		}
         } else {
             echo 'The search string is empty. Please enter a keyword to search.';
         }
