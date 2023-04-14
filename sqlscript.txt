@@ -1,0 +1,25 @@
+## Query creating the table if it does not exsist: 
+
+CREATE TABLE IF NOT EXISTS assignment_one(
+ status_code VARCHAR(5) PRIMARY KEY,
+ status_description TEXT NOT NULL,
+ share VARCHAR(10) NOT NULL,
+ status_date DATE NOT NULL,
+ allow_like TINYINT(1) NOT NULL DEFAULT 0,
+ allow_comment TINYINT(1) NOT NULL DEFAULT 0,
+ allow_share TINYINT(1) NOT NULL DEFAULT 0
+);
+
+## Query inserting data into the table:
+
+INSERT INTO assignment_one
+(status_code, status_description, share, status_date, allow_like, allow_comment, allow_share)
+VALUES ('$statuscode','$status','$shareOption', $formattedDate, $likePermission, $commentPermission, $sharePermission);
+
+## Query to find status in the database by status description:
+
+SELECT * FROM ".$sql_tble." WHERE status_description LIKE '%".$search."%';
+
+## Query to find if the table is in the database:
+
+SELECT * FROM ".$sql_tble.";

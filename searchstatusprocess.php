@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Assignment 1 - Web Dev 2023</title>
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
   </head>
   <body>
     <div class="content">
@@ -35,8 +36,10 @@
             }
 
 	    $sql = "SELECT * FROM ".$sql_tble." WHERE status_description LIKE '%".$search."%'";
+	    
 	    // Executes the query to find status descriptions like the search sent
 	    $result = mysqli_query($conn, $sql);
+	    
 	    if(mysqli_num_rows($result) == 0){
                 echo 'Status not found. Please try a different keyword. <br> <br>';
                 echo '<a href=searchstatusform.html>Search for another status<a> <br>';
@@ -64,12 +67,14 @@
 			}
 
         		// Display the details of the matched status record
+			echo '<div style="border: 1px solid black; padding: 10px;">';
 			echo 'Status: '.$row['status_description'].'<br>';
         		echo 'Status Code: '.$row['status_code'].'<br> <br>';
 			echo 'Share: '.$row['share'].'<br>';
 			echo 'Date Posted: '.$row['status_date'].'<br>';
 			echo 'Permission: '. ($allowLike ? $allowLike . " | " : '') . ($allowComment ? $allowComment  . " | " : '') . ($allowShare ? $allowShare : '') .'<br>';
-        		echo '<br>';
+			echo '</div>';
+			echo '<br>';
     	    		}
 		}
         } else {
